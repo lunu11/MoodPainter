@@ -67,8 +67,19 @@ public class DrawDemo : MonoBehaviour
         GameObject brushInstance = Instantiate(brush);
         currentLineRenderer =brushInstance.GetComponent<LineRenderer>();
         Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
-        if (Step == 2) currentLineRenderer.sortingOrder = 0;
-        else currentLineRenderer.sortingOrder = -1;
+        if (Step == 2)
+        {
+            currentLineRenderer.startWidth = 0.5f;
+            currentLineRenderer.endWidth = 0.5f;
+            currentLineRenderer.sortingOrder = 0;
+        }
+
+        else
+        {
+            currentLineRenderer.startWidth = 0.2f;
+            currentLineRenderer.endWidth = 0.2f;
+            currentLineRenderer.sortingOrder = -1;
+        }
 
         currentLineRenderer.colorGradient = currentColor;
         currentLineRenderer.SetPosition(0, mousePos);

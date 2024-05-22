@@ -75,7 +75,6 @@ public class PaintManager : MonoBehaviour
     {
         if (_colorPicker.activeSelf)
         {
-            _canvasColor.gameObject.SetActive(false);
             _colorPicker.SetActive(false);
             _drawDemo.enabled = true;
         }
