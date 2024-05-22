@@ -6,6 +6,7 @@ public class DrawDemo : MonoBehaviour
 {
     public Camera m_camera;
     public GameObject brush;
+    public int Step = 1;
 
     LineRenderer currentLineRenderer;
 
@@ -13,6 +14,7 @@ public class DrawDemo : MonoBehaviour
     private Rect drawArea;
     private Vector3 virtualKeyPosition = Vector2.zero;
     private RuntimePlatform platform;
+    public Gradient currentColor;
 
     private void Start()
     {
@@ -61,11 +63,14 @@ public class DrawDemo : MonoBehaviour
     }
 
     void CreateBrush()
-    {
+    {        
         GameObject brushInstance = Instantiate(brush);
         currentLineRenderer =brushInstance.GetComponent<LineRenderer>();
         Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+        if (Step == 2) currentLineRenderer.sortingOrder = 0;
+        else currentLineRenderer.sortingOrder = -1;
 
+        currentLineRenderer.colorGradient = currentColor;
         currentLineRenderer.SetPosition(0, mousePos);
         currentLineRenderer.SetPosition(1, mousePos);
     }
@@ -82,7 +87,7 @@ public class DrawDemo : MonoBehaviour
         gradient.SetKeys(
             new GradientColorKey[] { new GradientColorKey(colorPicked, 0.0f), new GradientColorKey(colorPicked, 1.0f) },
             new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(1.0f, 1.0f) });
-        currentLineRenderer.colorGradient = gradient;
+        currentColor = gradient;
     }
 }
     
