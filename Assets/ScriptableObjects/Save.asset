@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024ae720f71ac4d45b4a0bec515d7044, type: 3}
   m_Name: Save
   m_EditorClassIdentifier: 
-  Fishes: 010000
-  Decor: 00
+  Fishes: 000000
+  Decor: 01
