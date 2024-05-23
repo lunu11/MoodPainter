@@ -7,7 +7,13 @@ using UnityEngine;
 public class TankSO : ScriptableObject
 {
     public string FishID;
-    public List<string> DecorID = new List<string>();
+    public DateTime FishMatureDate;
+    public bool IsFishMatured;
+    public TimeSpan HappyDuration;
+    public bool IsFishAlive;
+    public string FishStatus;
+
+    public List<Item> DecorID = new List<Item>();
 }
 
 [Serializable]

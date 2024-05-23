@@ -14,9 +14,12 @@ public class PaintManager : MonoBehaviour
     [SerializeField] private GameObject _intro;
     [SerializeField] private GameObject _submitBtn;
     [SerializeField] private GameObject _finish;
+    [SerializeField] private TankSO _tankSO;
 
     private Image selectedButton;
     private int _money;
+    [SerializeField] private TextMeshProUGUI _moneyText;
+    [SerializeField] private TextMeshProUGUI _fishStatus;
 
 
     private void Start()
@@ -30,6 +33,8 @@ public class PaintManager : MonoBehaviour
             }
         }
         _money = PlayerPrefs.GetInt("Money");
+        _moneyText.text = "Money: " + _money.ToString() + "g";
+        _fishStatus.text = "Fish Status: " + _tankSO.FishStatus;
     }
     public void StartPainting()
     {
@@ -64,7 +69,7 @@ public class PaintManager : MonoBehaviour
         _finish.SetActive(true);
         _money += 50;
         PlayerPrefs.SetInt("Money", _money);
-
+        _moneyText.text = _money.ToString();
     }
 
     public void DontRemindToggle(bool value)

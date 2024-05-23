@@ -1,40 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Collection : MonoBehaviour
+public class Inventory : MonoBehaviour
 {
     [SerializeField] private ItemCollection _itemCollection;
-    [SerializeField] private GameObject _itemList;
+    [SerializeField] private TankSO _tankSO;
     [SerializeField] private Save _save;
+    [SerializeField] private GameObject _itemList;
 
-    [SerializeField] private GameObject _category;
+    [SerializeField] private TextMeshProUGUI _title;
+    [SerializeField] private GameObject _newFish;
+    [SerializeField] private GameObject _popup;
+    [SerializeField] private AquariumManager _aquariumManager;
 
-    private void OnEnable()
+    private string _type;
+
+    public void SetItems(string type)
     {
-        SetItems();
-    }
-
-    private void OnDisable()
-    {
-        ClearItems();
-    }
-
-    public void ChangeCategory(GameObject obj)
-    {
-        _category.GetComponent<Image>().color = new Color(0.2509804f, 0.5921569f, 0.9176471f);
-        _category = obj;
-        obj.GetComponent<Image>().color = new Color(0.3333334f, 0.4358902f, 1);
-        ClearItems();
-        SetItems();
-    }
-
-    private void SetItems()
-    {
-        switch (_category.name)
+        switch (type)
         {
             case "Fish":
+                _type = "Fish";
+                _newFish.SetActive(true);
+                _title.text = "Choose Fish";
                 for (int i = 0; i < _itemCollection.Fishes.Count; i++)
                 {
                     GameObject item = _itemList.transform.GetChild(i).gameObject;
@@ -48,6 +39,9 @@ public class Collection : MonoBehaviour
                 }
                 break;
             case "Decor":
+                _type = "Decor";
+                _newFish.SetActive(false);
+                _title.text = "Choose Decor";
                 for (int i = 0; i < _itemCollection.Decor.Count; i++)
                 {
                     GameObject item = _itemList.transform.GetChild(i).gameObject;
@@ -62,6 +56,31 @@ public class Collection : MonoBehaviour
                 break;
 
         }
+        _popup.SetActive(false);
+    }
+    public void Selected(ItemSlot item)
+    {
+        if (_type == "Fish")
+        {
+            if (!_tankSO.IsFishMatured)
+            {
+                _popup.SetActive(true);
+            }
+            else
+            {
+                _aquariumManager.ChangeFish(item.Fish);
+                gameObject.transform.parent.gameObject.SetActive(false);
+            }
+        } else
+        {
+            _aquariumManager.StartBuildMode(item.Decor);
+            gameObject.transform.parent.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnDisable()
+    {
+        ClearItems();                                                  
     }
     private void ClearItems()
     {

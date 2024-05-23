@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380b44eb8f9ec804a8d05d780a69601b, type: 3}
-  m_Name: Tank
+  m_Script: {fileID: 11500000, guid: 024ae720f71ac4d45b4a0bec515d7044, type: 3}
+  m_Name: Save
   m_EditorClassIdentifier: 
-  FishID: 
-  IsFishMatured: 0
-  IsFishAlive: 0
-  FishStatus: Unavailable
-  DecorID: []
+  Fishes: 0100
+  Decor: 01

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a3cff205c31fc4e81c698e29c6a689, type: 3}
   m_Name: ItemCollection
   m_EditorClassIdentifier: 
+  DefaultGuppy: {fileID: 11400000, guid: 36369babb59176c438925a41379ba1f1, type: 2}
   Fishes:
-  - {fileID: 11400000, guid: 36369babb59176c438925a41379ba1f1, type: 2}
   - {fileID: 11400000, guid: 6109acf44e7919c4e904534bde4e7a35, type: 2}
-  Decor: []
+  Decor:
+  - {fileID: 11400000, guid: ea75bd55f903631428c1d5ea5dc8e474, type: 2}

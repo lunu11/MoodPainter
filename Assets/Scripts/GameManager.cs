@@ -23,19 +23,20 @@ public class GameManager : MonoBehaviour
     public GameObject StartScreen;
     public GameObject Session;
 
-    public GameObject DrawManager;
-
     private float currentTime;
     [SerializeField] private int _money;
     [SerializeField] private TextMeshProUGUI _moneyText;
+    [SerializeField] private TextMeshProUGUI _fishStatus;
+    [SerializeField] private TankSO _tankSO;
     private void Start()
     {
         if (!PlayerPrefs.HasKey("Money"))
         {
-            _money = 10;
+            _money = 100;
         }
 
-        _moneyText.text = _money.ToString();
+        _moneyText.text = "Money: " + _money.ToString() + "g";
+        _fishStatus.text = "Fish Status: " + _tankSO.FishStatus;
     }
     public void SetTime(int time)
     {
@@ -108,7 +109,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
-
+    public void LoadScene(int id)
+    {
+        SceneManager.LoadScene(id);
+    }
 
     private void OnApplicationFocus(bool status)
     {
