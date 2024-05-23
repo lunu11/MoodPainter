@@ -68,13 +68,14 @@ public class BuildManager : MonoBehaviour
 
                 }
             }
-        }        
+        }
     }
 
     public void SaveExit()
     {
         if (IsEligible)
         {
+            _selectedDecor.GetComponent<SpriteRenderer>().color = Color.white;
             _moveButton.SetActive(false);
             _tools.SetActive(true);
             gameObject.SetActive(false);
@@ -83,6 +84,7 @@ public class BuildManager : MonoBehaviour
     }
     public void Exit()
     {
+        _selectedDecor.GetComponent<SpriteRenderer>().color = Color.white;
         _moveButton.SetActive(false);
         _tools.SetActive(true);
         gameObject.SetActive(false);
