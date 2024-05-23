@@ -64,7 +64,7 @@ public class Inventory : MonoBehaviour
         {
             if (!_tankSO.IsFishMatured)
             {
-                _popup.SetActive(true);
+                //_popup.SetActive(true);
             }
             else
             {

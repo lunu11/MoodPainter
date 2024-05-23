@@ -27,14 +27,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _money;
     [SerializeField] private TextMeshProUGUI _moneyText;
     [SerializeField] private TextMeshProUGUI _fishStatus;
+    [SerializeField] private TextMeshProUGUI _successText;
     [SerializeField] private TankSO _tankSO;
     private void Start()
     {
         if (!PlayerPrefs.HasKey("Money"))
         {
             _money = 100;
+            PlayerPrefs.SetInt("Money", _money);
         }
-
+        _money = PlayerPrefs.GetInt("Money");
         _moneyText.text = "Money: " + _money.ToString() + "g";
         _fishStatus.text = "Fish Status: " + _tankSO.FishStatus;
     }
@@ -85,17 +87,22 @@ public class GameManager : MonoBehaviour
 
     public void AddMoney()
     {
+        float multiplier = SelectedTime / 600;
+        
         switch (currentTime)
         {
             case float value when value <= 0:
-                _money += 50;
+                _money += Mathf.RoundToInt(50 * multiplier);
                 PlayerPrefs.SetInt("Money", _money);
-
+                _successText.text = "Well done! <br><br>You've received " + _money + "g";
                 break;
             case float value when value >= 0:
                 if (timePassed >= 600)
                 {
-
+                    multiplier = timePassed / 600;
+                    _money += Mathf.RoundToInt(50 * multiplier);
+                    PlayerPrefs.SetInt("Money", _money);
+                    _successText.text = "Well done! <br><br>You've received " + _money + "g";
                 }
                 break;
 

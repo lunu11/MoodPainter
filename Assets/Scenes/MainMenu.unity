@@ -1566,8 +1566,8 @@ MonoBehaviour:
 
     Pick your
     session time and start. Don''t leave or unfocus the app while during session!
-    If you do, you will only receive rewards corresponding to the time you spent
-    (at least 10 minutes)'
+    If you do, you will only receive rewards proportional to the time you spent (at
+    least 10 minutes)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1837,10 +1837,10 @@ MonoBehaviour:
   SessionSuccessful: {fileID: 272134372}
   StartScreen: {fileID: 307000541}
   Session: {fileID: 26411911}
-  DrawManager: {fileID: 0}
   _money: 0
   _moneyText: {fileID: 139678013}
   _fishStatus: {fileID: 127794096}
+  _successText: {fileID: 0}
   _tankSO: {fileID: 11400000, guid: 4c1869e64adf0774c83c85d841393f6f, type: 2}
 --- !u!4 &604181535
 Transform:

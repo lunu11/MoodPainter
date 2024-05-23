@@ -221,6 +221,8 @@ public class AquariumManager : MonoBehaviour
             _tankSO.IsFishAlive = true;
 
             _fish.GetComponent<SpriteRenderer>().sprite = fish.Sprite;
+            _countDown.gameObject.SetActive(true);
+            _countDown.text = _tankSO.FishMatureDate.ToString();
             SaveProgress();
         }
     }

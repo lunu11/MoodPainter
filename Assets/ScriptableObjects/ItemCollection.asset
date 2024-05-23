@@ -15,5 +15,7 @@ MonoBehaviour:
   DefaultGuppy: {fileID: 11400000, guid: 36369babb59176c438925a41379ba1f1, type: 2}
   Fishes:
   - {fileID: 11400000, guid: 6109acf44e7919c4e904534bde4e7a35, type: 2}
+  - {fileID: 11400000, guid: d505b47b915263a4ba0c2a157eda6119, type: 2}
+  - {fileID: 11400000, guid: 759a811dabf56124fa00aec3f3541c79, type: 2}
   Decor:
   - {fileID: 11400000, guid: ea75bd55f903631428c1d5ea5dc8e474, type: 2}
